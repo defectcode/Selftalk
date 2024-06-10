@@ -1,9 +1,25 @@
-import UserTable from "./components/UserTable";
+'use client'
+import { useState, useEffect } from 'react';
+import React from 'react';
+import UserTable from  '../app/components/UserTable'
 
-export default function Home() {
+function Home() {
+  const [data, setData] = useState([]);  
+
+  useEffect(() => {    
+    fetch('http://localhost:8000/api')
+      .then(response => response.json())
+      .then(data => {
+        setData(data);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
   return (
     <div>
-      <UserTable users={[]}/>
+      <UserTable data={data} />
     </div>
   );
 }
+
+export default Home;

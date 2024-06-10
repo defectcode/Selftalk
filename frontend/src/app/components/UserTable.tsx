@@ -1,3 +1,5 @@
+'use client'
+import { useState, useEffect } from 'react';
 import React from 'react';
 
 type User = {
@@ -14,13 +16,13 @@ type User = {
 };
 
 type UserTableProps = {
-  users: User[];
+  data: User[];
 };
 
-const UserTable: React.FC<UserTableProps> = ({ users }) => {
+const UserTable: React.FC<UserTableProps> = ({ data }) => {
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-2xl font-bold my-4">User List</h1>
+      <h1 className="text-2xl font-bold my-4 flex justify-center">User List</h1>
       <table className="min-w-full bg-white">
         <thead>
           <tr>
@@ -37,7 +39,7 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {data.map((user) => (
             <tr key={user.id}>
               <td className="py-2 px-4 border-b">{user.id}</td>
               <td className="py-2 px-4 border-b">{user.first_name}</td>

@@ -12,5 +12,4 @@ class UserController {
         return $this->usersModel->getAllUsers();
     }
 
-    // Metodele pentru manipularea utilizatorilor pot fi adăugate aici în funcție de necesități
 }
