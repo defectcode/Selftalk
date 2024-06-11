@@ -12,3 +12,5 @@ localhost:3000
 
 ``php -S localhost:8000``
 localhost:8000
+
+``curl -X DELETE http://localhost:8000/api/users/1``

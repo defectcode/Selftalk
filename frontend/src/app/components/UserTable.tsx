@@ -1,5 +1,3 @@
-'use client'
-import { useState, useEffect } from 'react';
 import React from 'react';
 
 type User = {
@@ -17,9 +15,19 @@ type User = {
 
 type UserTableProps = {
   data: User[];
+  onDelete: (id: number) => void; 
+  onUpdate: () => void; 
 };
 
-const UserTable: React.FC<UserTableProps> = ({ data }) => {
+const UserTable: React.FC<UserTableProps> = ({ data, onDelete, onUpdate }) => {
+  const handleDeleteClick = (id: number) => {
+    onDelete(id);
+  };
+
+  const handleUpdateClick = () => {
+    onUpdate();
+  };
+
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-2xl font-bold my-4 flex justify-center">User List</h1>
@@ -36,6 +44,7 @@ const UserTable: React.FC<UserTableProps> = ({ data }) => {
             <th className="py-2 px-4 border-b">Country</th>
             <th className="py-2 px-4 border-b">Occupation</th>
             <th className="py-2 px-4 border-b">Created At</th>
+            <th className="py-2 px-4 border-b">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -51,6 +60,20 @@ const UserTable: React.FC<UserTableProps> = ({ data }) => {
               <td className="py-2 px-4 border-b">{user.country}</td>
               <td className="py-2 px-4 border-b">{user.occupation}</td>
               <td className="py-2 px-4 border-b">{user.created_at}</td>
+              <td className="py-2 px-4 border-b">
+                <button
+                  className="bg-red-500 text-white px-4 py-2 rounded mr-2"
+                  onClick={() => handleDeleteClick(user.id)}
+                >
+                  Delete
+                </button>
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 rounded"
+                  onClick={handleUpdateClick} 
+                >
+                  Update
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
