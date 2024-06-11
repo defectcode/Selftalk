@@ -14,3 +14,6 @@ localhost:3000
 localhost:8000
 
 ``curl -X DELETE http://localhost:8000/api/users/1``
+
+
+Time to complete the task: 6-8 hours
