@@ -38,14 +38,13 @@ function App() {
       })
       .catch(error => console.error('Error deleting user:', error));
   };
-
-    const handleUpdate = (user: any) => {
-      setSelectedUser(user);
-    };
+  
+  const handleUpdate = (user: any) => {
+    setSelectedUser(user);
+  };
 
   return (
     <div>
-      {/* Pasăm și funcțiile de ștergere și actualizare către componenta UserTable */}
       <UserTable data={data} onDelete={handleDelete} onUpdate={App} />
     </div>
   );
